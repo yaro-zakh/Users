@@ -13,6 +13,7 @@ class UserInfoController: UIViewController {
     var presenter: UserInfoPresenter!
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var sortButton: UIButton!
     
     private let cellIdentifier = "UserInfoTableViewCell"
     
@@ -20,6 +21,10 @@ class UserInfoController: UIViewController {
         super.viewDidLoad()
         presenter = UserInfoPresenter(with: self)
         presenter.viewDidLoad()
+    }
+    
+    @IBAction func sortButtonAction(_ sender: UIButton) {
+        presenter.sortedUser()
     }
 }
 
@@ -40,6 +45,17 @@ extension UserInfoController: UITableViewDataSource {
 extension UserInfoController: UserView {
     func reloadView() {
         tableView.reloadData()
+    }
+    
+    func changeSortButtonState(state: SortState) {
+        switch state {
+        case .unsorted:
+            sortButton.setImage(UIImage(named: "unsorted"), for: .normal)
+        case .alphabetical:
+            sortButton.setImage(UIImage(named: "a-z"), for: .normal)
+        case .revesreAlphabetical:
+            sortButton.setImage(UIImage(named: "z-a"), for: .normal)
+        }
     }
 }
 

@@ -75,9 +75,26 @@
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c7z-LZ-0PZ">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cvl-ca-uJZ">
+                                        <rect key="frame" x="10" y="60" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Cvl-ca-uJZ" secondAttribute="height" multiplier="1:1" id="Dec-uV-VXt"/>
+                                            <constraint firstAttribute="height" constant="30" id="VnI-Tk-NS2"/>
+                                        </constraints>
+                                        <state key="normal" title="Sort" image="unsorted"/>
+                                        <connections>
+                                            <action selector="sortButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zEt-3m-iBa"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Cvl-ca-uJZ" secondAttribute="trailing" constant="374" id="7g1-ox-i5o"/>
                                     <constraint firstAttribute="height" constant="100" id="9im-bK-D1b"/>
+                                    <constraint firstItem="Cvl-ca-uJZ" firstAttribute="top" secondItem="c7z-LZ-0PZ" secondAttribute="top" constant="60" id="USS-lf-4Bz"/>
+                                    <constraint firstAttribute="bottom" secondItem="Cvl-ca-uJZ" secondAttribute="bottom" constant="10" id="jYS-Jc-T20"/>
+                                    <constraint firstItem="Cvl-ca-uJZ" firstAttribute="leading" secondItem="c7z-LZ-0PZ" secondAttribute="leading" constant="10" id="sMB-Ny-Mol"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -94,6 +111,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="sortButton" destination="Cvl-ca-uJZ" id="FBI-ef-CaY"/>
                         <outlet property="tableView" destination="t3r-cn-djZ" id="Ut9-oX-a93"/>
                     </connections>
                 </viewController>
@@ -102,4 +120,7 @@
             <point key="canvasLocation" x="-65.217391304347828" y="137.94642857142856"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="unsorted" width="30" height="30"/>
+    </resources>
 </document>
