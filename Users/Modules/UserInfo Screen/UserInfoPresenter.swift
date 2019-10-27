@@ -11,6 +11,7 @@ import Foundation
 protocol UserView: class {
     func reloadView()
     func changeSortButtonState(state: SortState)
+    func endRefreshing()
 }
 
 enum SortState {
@@ -69,6 +70,7 @@ final class UserInfoPresenter {
                 self.dataSource = usersInfo.data
                 self.userData = usersInfo.data
                 DispatchQueue.main.async {
+                    self.view?.endRefreshing()
                     self.view?.reloadView()
                 }
             }

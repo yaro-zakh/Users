@@ -8,12 +8,10 @@
 
 import Foundation
 
-// MARK: - User
 struct UsersInfo: Codable {
     let data: [User]
 }
 
-// MARK: - Datum
 struct User: Codable {
     let id: Int
     let email, firstName, lastName: String

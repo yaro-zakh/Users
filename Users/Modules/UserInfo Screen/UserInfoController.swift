@@ -9,20 +9,37 @@
 import UIKit
 
 class UserInfoController: UIViewController {
-
+    
     var presenter: UserInfoPresenter!
     
     @IBOutlet weak var tableView: UITableView!
     
     let filterView = FilterDataView()
     let sortButton = UIButton(type: .custom)
+    
+    private let refreshControl = UIRefreshControl()
     private let cellIdentifier = "UserInfoTableViewCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSortButton()
         setupFilterView()
+        tableView.refreshControl = refreshControl
+        configureRefreshControl()
         presenter = UserInfoPresenter(with: self)
+        presenter.viewDidLoad()
+    }
+    
+    private func configureRefreshControl() {
+        let color = UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: color]
+        
+        refreshControl.addTarget(self, action: #selector(refreshUserData(_:)), for: .valueChanged)
+        refreshControl.tintColor = color
+        refreshControl.attributedTitle = NSAttributedString(string: "Fetching User Data ...", attributes: attributes)
+    }
+    
+    @objc private func refreshUserData(_ sender: Any) {
         presenter.viewDidLoad()
     }
     
@@ -31,7 +48,7 @@ class UserInfoController: UIViewController {
         let rightBarButton = UIBarButtonItem(customView: filterView)
         self.navigationItem.rightBarButtonItem = rightBarButton
     }
-        
+    
     private func setupSortButton() {
         sortButton.setImage(UIImage(named: "unsorted"), for: .normal)
         sortButton.addTarget(self, action: #selector(sortButtonAction), for: .touchUpInside)
@@ -56,9 +73,20 @@ extension UserInfoController: UITableViewDataSource {
         }
         return UITableViewCell()
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            presenter.userData.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
 }
 
 extension UserInfoController: UserView {
+    func endRefreshing() {
+        refreshControl.endRefreshing()
+    }
+    
     func reloadView() {
         tableView.reloadData()
     }
@@ -76,9 +104,8 @@ extension UserInfoController: UserView {
 }
 
 extension UserInfoController: FilterView {
-    func filterData(first: Character, second: Character) {
-        presenter.userData = presenter.dataSource.filter { $0.firstName.contains(first) && $0.firstName.contains(second)}
+    func filterData(first: String, second: String) {
+        presenter.userData = presenter.dataSource.filter { $0.firstName.localizedStandardContains(first) && $0.firstName.localizedStandardContains(second)}
         tableView.reloadData()
     }
 }
-

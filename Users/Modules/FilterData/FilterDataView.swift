@@ -8,8 +8,8 @@
 
 import UIKit
 
-protocol FilterView {
-    func filterData(first: Character, second: Character)
+protocol FilterView: class {
+    func filterData(first: String, second: String)
 }
 
 
@@ -19,7 +19,7 @@ class FilterDataView: UIView {
     @IBOutlet weak var firstLetter: UITextField!
     @IBOutlet weak var secondLetter: UITextField!
     
-    var delegate: FilterView?
+    weak var delegate: FilterView?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -66,7 +66,8 @@ class FilterDataView: UIView {
     }
     
     @IBAction func filterButtonAction(_ sender: UIButton) {
-        delegate?.filterData(first: Character(firstLetter.text!), second: Character(secondLetter.text!))
+        self.endEditing(true)
+        delegate?.filterData(first: firstLetter.text!, second: secondLetter.text!)
     }
 }
 
