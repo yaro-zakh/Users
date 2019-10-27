@@ -24,7 +24,7 @@ extension UIImageView {
             }
         } else {
             DispatchQueue.main.async {
-                self.image = UIImage(named: "noImage")
+                self.image = UIImage(named: "no avatar")
             }
         }
     }

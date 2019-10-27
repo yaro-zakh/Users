@@ -13,17 +13,33 @@ class UserInfoController: UIViewController {
     var presenter: UserInfoPresenter!
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var sortButton: UIButton!
     
+    let filterView = FilterDataView()
+    let sortButton = UIButton(type: .custom)
     private let cellIdentifier = "UserInfoTableViewCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupSortButton()
+        setupFilterView()
         presenter = UserInfoPresenter(with: self)
         presenter.viewDidLoad()
     }
     
-    @IBAction func sortButtonAction(_ sender: UIButton) {
+    private func setupFilterView() {
+        filterView.delegate = self
+        let rightBarButton = UIBarButtonItem(customView: filterView)
+        self.navigationItem.rightBarButtonItem = rightBarButton
+    }
+        
+    private func setupSortButton() {
+        sortButton.setImage(UIImage(named: "unsorted"), for: .normal)
+        sortButton.addTarget(self, action: #selector(sortButtonAction), for: .touchUpInside)
+        let leftBarButton = UIBarButtonItem(customView: sortButton)
+        self.navigationItem.leftBarButtonItem = leftBarButton
+    }
+    
+    @objc func sortButtonAction(_ sender: UIBarButtonItem) {
         presenter.sortedUser()
     }
 }
@@ -35,7 +51,7 @@ extension UserInfoController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? UserInfoTableViewCell {
-            cell.user = presenter.dataSource[indexPath.row]
+            cell.user = presenter.userData[indexPath.row]
             return cell
         }
         return UITableViewCell()
@@ -56,6 +72,13 @@ extension UserInfoController: UserView {
         case .revesreAlphabetical:
             sortButton.setImage(UIImage(named: "z-a"), for: .normal)
         }
+    }
+}
+
+extension UserInfoController: FilterView {
+    func filterData(first: Character, second: Character) {
+        presenter.userData = presenter.dataSource.filter { $0.firstName.contains(first) && $0.firstName.contains(second)}
+        tableView.reloadData()
     }
 }
 

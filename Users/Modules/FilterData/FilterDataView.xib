@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilterDataView" customModule="Users" customModuleProvider="target">
+            <connections>
+                <outlet property="filterButton" destination="YbE-Uo-hr7" id="rGx-W8-sV4"/>
+                <outlet property="firstLetter" destination="Z3S-pb-r6q" id="jQ6-Ww-Gaa"/>
+                <outlet property="secondLetter" destination="amk-sI-pIo" id="byM-sl-jOm"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="441" height="160"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="WIa-Bq-6Q4">
+                    <rect key="frame" x="0.0" y="2" width="441" height="122"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YbE-Uo-hr7">
+                            <rect key="frame" x="153.5" y="0.0" width="134" height="60"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="select all with letter"/>
+                            <connections>
+                                <action selector="filterButtonAction:" destination="-1" eventType="touchUpInside" id="7Aw-9e-Y5W"/>
+                            </connections>
+                        </button>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="O68-Ut-adN">
+                            <rect key="frame" x="153.5" y="62" width="134" height="60"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="a" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z3S-pb-r6q">
+                                    <rect key="frame" x="0.0" y="0.0" width="57" height="60"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="2sw-xo-Tpn"/>
+                                    </connections>
+                                </textField>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="b" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="amk-sI-pIo">
+                                    <rect key="frame" x="77" y="0.0" width="57" height="60"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="t2X-MR-AT4"/>
+                                    </connections>
+                                </textField>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="O68-Ut-adN" firstAttribute="width" secondItem="YbE-Uo-hr7" secondAttribute="width" id="fuZ-Qo-WeN"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="WIa-Bq-6Q4" secondAttribute="trailing" id="1i8-8g-Qs0"/>
+                <constraint firstItem="WIa-Bq-6Q4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="2" id="2BB-sd-lSB"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="WIa-Bq-6Q4" secondAttribute="bottom" constant="2" id="P8p-DE-zRL"/>
+                <constraint firstItem="WIa-Bq-6Q4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="kzh-GX-js4"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="119.56521739130436" y="23.4375"/>
+        </view>
+    </objects>
+</document>

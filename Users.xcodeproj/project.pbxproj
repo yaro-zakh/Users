@@ -18,6 +18,8 @@
 		1AFF02D223646B44007FCED9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AFF02D023646B44007FCED9 /* Main.storyboard */; };
 		1AFF02D423646B45007FCED9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AFF02D323646B45007FCED9 /* Assets.xcassets */; };
 		1AFF02D723646B45007FCED9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AFF02D523646B45007FCED9 /* LaunchScreen.storyboard */; };
+		5BF983912365AA8500925600 /* FilterDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BF983902365AA8500925600 /* FilterDataView.xib */; };
+		5BF983932365ABB700925600 /* FilterDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF983922365ABB700925600 /* FilterDataView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		1AFF02D323646B45007FCED9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1AFF02D623646B45007FCED9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1AFF02D823646B45007FCED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5BF983902365AA8500925600 /* FilterDataView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterDataView.xib; sourceTree = "<group>"; };
+		5BF983922365ABB700925600 /* FilterDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDataView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,7 @@
 		1A12526A2364702E0056ED3F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				5BF9838F2365AA3D00925600 /* FilterData */,
 				1A12526B2364704D0056ED3F /* UserInfo Screen */,
 			);
 			path = Modules;
@@ -146,6 +151,15 @@
 			path = Users;
 			sourceTree = "<group>";
 		};
+		5BF9838F2365AA3D00925600 /* FilterData */ = {
+			isa = PBXGroup;
+			children = (
+				5BF983902365AA8500925600 /* FilterDataView.xib */,
+				5BF983922365ABB700925600 /* FilterDataView.swift */,
+			);
+			path = FilterData;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -206,6 +220,7 @@
 			files = (
 				1AFF02D723646B45007FCED9 /* LaunchScreen.storyboard in Resources */,
 				1AFF02D423646B45007FCED9 /* Assets.xcassets in Resources */,
+				5BF983912365AA8500925600 /* FilterDataView.xib in Resources */,
 				1AFF02D223646B44007FCED9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,6 +235,7 @@
 				1AFE772523648A0E005F4767 /* UserInfoTableViewCell.swift in Sources */,
 				1AFF02CF23646B44007FCED9 /* UserInfoController.swift in Sources */,
 				1AFF02CD23646B44007FCED9 /* AppDelegate.swift in Sources */,
+				5BF983932365ABB700925600 /* FilterDataView.swift in Sources */,
 				1AFE772923649C1F005F4767 /* UIImageViewExtensions.swift in Sources */,
 				1AFE772F2364A751005F4767 /* NetworkManager.swift in Sources */,
 				1A12526F236470DF0056ED3F /* User.swift in Sources */,

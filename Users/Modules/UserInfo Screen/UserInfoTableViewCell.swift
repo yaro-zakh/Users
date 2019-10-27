@@ -28,5 +28,8 @@ class UserInfoTableViewCell: UITableViewCell {
         self.backgroundColor = UIColor.white.withAlphaComponent(0.5)
         self.layer.cornerRadius = 10
         self.layer.masksToBounds = true
+        
+        self.userPhoto.layer.cornerRadius = self.userPhoto.frame.height/2
+        self.userPhoto.clipsToBounds = true
     }
 }

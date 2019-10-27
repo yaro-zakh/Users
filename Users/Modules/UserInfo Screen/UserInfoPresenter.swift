@@ -26,9 +26,9 @@ final class UserInfoPresenter {
     var sortState: SortState = .unsorted
     
     var dataSource = [User]()
-    var unsortedDataSource = [User]()
+    var userData = [User]()
     var numberOfItems: Int {
-        return dataSource.count
+        return userData.count
     }
     
     init(with view: UserView) {
@@ -49,13 +49,13 @@ final class UserInfoPresenter {
     func sortedUser() {
         switch sortState {
         case .unsorted:
-            dataSource = dataSource.sorted(by: {$0.firstName < $1.firstName})
+            userData = dataSource.sorted(by: {$0.firstName < $1.firstName})
             sortState = .alphabetical
         case .alphabetical:
-            dataSource = dataSource.sorted(by: {$0.firstName > $1.firstName})
+            userData = dataSource.sorted(by: {$0.firstName > $1.firstName})
             sortState = .revesreAlphabetical
         case .revesreAlphabetical:
-            dataSource = unsortedDataSource
+            userData = dataSource
             sortState = .unsorted
         }
         view?.changeSortButtonState(state: sortState)
@@ -67,7 +67,7 @@ final class UserInfoPresenter {
             guard let self = self else { return }
             if let usersInfo = usersInfo {
                 self.dataSource = usersInfo.data
-                self.unsortedDataSource = self.dataSource
+                self.userData = usersInfo.data
                 DispatchQueue.main.async {
                     self.view?.reloadView()
                 }
