@@ -13,12 +13,16 @@ class UserInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var userPhoto: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var lastNameLabel: UILabel!
+    @IBOutlet weak var avatarActivityIndicator: UIActivityIndicatorView!
     
     var user: User? {
         didSet {
+            avatarActivityIndicator.startAnimating()
             userNameLabel.text = user?.firstName
             lastNameLabel.text = user?.lastName
-            userPhoto.load(url: user?.avatar)
+            userPhoto.load(url: user?.avatar) {
+                self.avatarActivityIndicator.stopAnimating()
+            }
         }
     }
     

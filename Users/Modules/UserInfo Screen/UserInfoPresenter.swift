@@ -50,10 +50,10 @@ final class UserInfoPresenter {
     func sortedUser() {
         switch sortState {
         case .unsorted:
-            userData = dataSource.sorted(by: {$0.firstName < $1.firstName})
+            userData = userData.sorted(by: {$0.firstName < $1.firstName})
             sortState = .alphabetical
         case .alphabetical:
-            userData = dataSource.sorted(by: {$0.firstName > $1.firstName})
+            userData = userData.sorted(by: {$0.firstName > $1.firstName})
             sortState = .revesreAlphabetical
         case .revesreAlphabetical:
             userData = dataSource

@@ -40,6 +40,9 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="dDy-mX-AHL">
+                                                    <rect key="frame" x="61" y="61" width="20" height="20"/>
+                                                </activityIndicatorView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bW6-2Q-WtV">
                                                     <rect key="frame" x="142" y="91" width="232" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -48,6 +51,7 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="dDy-mX-AHL" firstAttribute="centerX" secondItem="efQ-Du-Khd" secondAttribute="centerX" id="6IH-65-njq"/>
                                                 <constraint firstItem="bW6-2Q-WtV" firstAttribute="leading" secondItem="efQ-Du-Khd" secondAttribute="trailing" constant="10" id="8Do-65-oph"/>
                                                 <constraint firstItem="nfN-Tr-CS6" firstAttribute="centerY" secondItem="efQ-Du-Khd" secondAttribute="centerY" id="B7I-ai-bEP"/>
                                                 <constraint firstItem="bW6-2Q-WtV" firstAttribute="top" secondItem="nfN-Tr-CS6" secondAttribute="bottom" constant="5" id="CSj-qy-foE"/>
@@ -55,11 +59,13 @@
                                                 <constraint firstItem="nfN-Tr-CS6" firstAttribute="leading" secondItem="efQ-Du-Khd" secondAttribute="trailing" constant="10" id="SkG-pE-TFW"/>
                                                 <constraint firstAttribute="bottom" secondItem="efQ-Du-Khd" secondAttribute="bottom" constant="10" id="Uh8-oM-iir"/>
                                                 <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="nfN-Tr-CS6" secondAttribute="trailing" constant="20" id="jp3-Rl-71C"/>
+                                                <constraint firstItem="dDy-mX-AHL" firstAttribute="centerY" secondItem="efQ-Du-Khd" secondAttribute="centerY" id="ld6-p7-gAS"/>
                                                 <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="bW6-2Q-WtV" secondAttribute="trailing" constant="20" id="p7m-Uj-Mtf"/>
                                                 <constraint firstItem="efQ-Du-Khd" firstAttribute="leading" secondItem="hyx-QG-QAN" secondAttribute="leading" constant="10" id="y0l-ii-hyK"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="avatarActivityIndicator" destination="dDy-mX-AHL" id="fdF-cV-OLD"/>
                                             <outlet property="lastNameLabel" destination="bW6-2Q-WtV" id="h6x-Ec-OHn"/>
                                             <outlet property="userNameLabel" destination="nfN-Tr-CS6" id="JtZ-u5-hwj"/>
                                             <outlet property="userPhoto" destination="efQ-Du-Khd" id="Gpd-i8-y2E"/>

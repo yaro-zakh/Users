@@ -11,20 +11,20 @@ import UIKit
 
 extension UIImageView {
     
-    func load(url: URL?) {
+    func load(url: URL?, completion: @escaping () -> Void) {
         if let url = url {
             DispatchQueue.global().async { [weak self] in
-                if let data = try? Data(contentsOf: url) {
-                    if let image = UIImage(data: data) {
-                        DispatchQueue.main.async {
-                            self?.image = image
-                        }
-                    }
+                guard let data = try? Data(contentsOf: url) else { return }
+                let image = UIImage(data: data)
+                DispatchQueue.main.async {
+                    self?.image = image
+                    completion()
                 }
             }
         } else {
             DispatchQueue.main.async {
                 self.image = UIImage(named: "no avatar")
+                completion()
             }
         }
     }
