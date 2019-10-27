@@ -2,7 +2,7 @@
 //  FilterDataView.swift
 //  Users
 //
-//  Created by Kateryna Zakharchuk on 10/27/19.
+//  Created by Yaroslav Zakharchuk on 10/27/19.
 //  Copyright © 2019 Yaroslav Zakharchuk. All rights reserved.
 //
 
@@ -11,7 +11,6 @@ import UIKit
 protocol FilterView: class {
     func filterData(first: String, second: String)
 }
-
 
 @IBDesignable
 class FilterDataView: UIView {
